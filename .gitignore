@@ -1,0 +1,7 @@
+# Database stuff
+dbconnect.php
+api/dbconnect.php
+dbadmin
+
+#Equipment Files
+files/*
