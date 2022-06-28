@@ -126,25 +126,27 @@
             $serial = $row['serial#'];
             $status = ($row['active']) ? "<i class=\"fa-solid fa-check\"></i>" : "<i class=\"fa-solid fa-xmark\"></i>";
             
-            echo "<tr>
+            echo "<div class=\"container-fluid\">
+                <tr>
                     <td>$serial</td>
                     <td>$device_type</td>
                     <td>$device_vendor</td>
                     <td align=\"center\">$status</td>
                     <td align=\"center\">
-                        <div class=\"row\">
-                            <div class=\"col\">
+                        <div class=\"row justify-content-center\">
+                            <div class=\"col-4\">
                                 <a href=\"device.php?did=$did\" class=\"viewlink\"><i class=\"fa-solid fa-circle-info\"></i></a>
                             </div>
-                            <div class=\"col\">
+                            <div class=\"col-4\">
                                 <a href=\"update.php?did=$did\" class=\"viewlink\"><i class=\"fa-solid fa-pen\"></i></a>
                             </div>
-                            <div class=\"col\">
+                            <div class=\"col-4\">
                                 <a href=\"delete.php?did=$did\" class=\"viewlink btn-danger\"><i class=\"fa-solid fa-trash-can\"></i></a>
                             </div>
                         </div>
                     </td>
-                </tr>";
+                </tr>
+            </div>";
         }
         echo "</table></div>";
         echo "<a href=\"create.php\" class=\"viewlink create-link\">Create New Device <i class=\"fa-solid fa-circle-plus\"></i></a>";
