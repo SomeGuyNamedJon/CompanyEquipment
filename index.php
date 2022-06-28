@@ -7,11 +7,24 @@
         <link rel="stylesheet" href="./css/main.css">
         <link rel="stylesheet" href="./css/bootstrap-grid.css">
         <link rel="stylesheet" href="./css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="./css/responsive.dataTables.min.css">
+        <link rel="stylesheet" href="./css/rowReorder.dataTables.min.css">
         <script src="https://kit.fontawesome.com/5a3c76bb3d.js" crossorigin="anonymous"></script>
 
         <script>
             $(document).ready( function () {
-                $('#equipment').DataTable();
+                $('#equipment').DataTable(
+                    {
+                        rowReorder: {
+                            selector: 'td:nth-child(2)'
+                        },
+                        autoWidth: true,
+                        responsive: true,
+                        columnDefs: [
+                            { width: '20%', targets: 0 }
+                        ]
+                    }
+                );
             } );
         </script>
     </head>
@@ -109,7 +122,7 @@
         *  Table
         */
         echo "<div class=\"display-block\">
-            <table id=\"equipment\">
+            <table id=\"equipment\" class=\"nowrap\" style=\"width:100%\">
                     <thead>
                         <tr>
                             <th>Serial Number</th>
@@ -126,13 +139,13 @@
             $serial = $row['serial#'];
             $status = ($row['active']) ? "<i class=\"fa-solid fa-check\"></i>" : "<i class=\"fa-solid fa-xmark\"></i>";
             
-            echo "<div class=\"container-fluid\">
-                <tr>
+            echo "<tr>
                     <td>$serial</td>
                     <td>$device_type</td>
                     <td>$device_vendor</td>
                     <td align=\"center\">$status</td>
                     <td align=\"center\">
+                        <div class=\"container-fluid\" style=\"width:100%\">
                         <div class=\"row justify-content-center\">
                             <div class=\"col-4\">
                                 <a href=\"device.php?did=$did\" class=\"viewlink\"><i class=\"fa-solid fa-circle-info\"></i></a>
@@ -144,9 +157,9 @@
                                 <a href=\"delete.php?did=$did\" class=\"viewlink btn-danger\"><i class=\"fa-solid fa-trash-can\"></i></a>
                             </div>
                         </div>
+                        </div>
                     </td>
-                </tr>
-            </div>";
+                </tr>";
         }
         echo "</table></div>";
         echo "<a href=\"create.php\" class=\"viewlink create-link\">Create New Device <i class=\"fa-solid fa-circle-plus\"></i></a>";
