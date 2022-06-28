@@ -16,10 +16,14 @@ To have a functioning API which can take curl requests you must add this to your
 Add this redirect
 ```
 location ~ ^/api/(.*)$ {
-  proxy_pass https://$server_name/api/index.php?$1&$args;
+  proxy_pass https://$http_host/api/index.php?$1&$args;
 }
 ```
 
-### //TBD
+### Website:
+The server instance hosting this code will be shut down most of the time to avoid charges from AWS. As such I don't have a dedicated DNS for it.
+It's SSL Certificate is also self-signed. All these factors in consideration, I have no intention of sharing a live version of this webapp/api.
+
+### //TBD:
 
 Might polish this up a bit, web app needs some eyecandy and api needs a bit of a refactor.
